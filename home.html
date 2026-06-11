@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="icon" type="image/x-icon" href="/img/lock2.png">
+</head>
+
+<body>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="expanded-note" id="expandedNote">
+
+    <button class="close-btn" onclick="closeNote()">✕</button>
+
+    <h1 id="noteTitle">TITLE</h1>
+
+    <p id="noteContent">
+      content content content
+    </p>
+
+  </div>
+
+  <div class="board">
+
+    <div class="paper pink" onclick="openNote(
+    'PORTUGUESE CLASSES',
+    '<p style=\'text-align: justify; margin: 0;\'>I had never really taken what I would consider a serious writing course. Writing was mostly embedded within my standard Portuguese classes, where it was treated as one component among many others.<br><br>When writing was taught more explicitly, it was usually geared toward preparing us for the structure needed to perform well on the national exam. Over time, I learned to rely on this formula. In a sense, I learned how to fill in the blanks.</p>'
+    )">
+      <div class="scribbles"></div>
+    </div>
+
+    <div class="paper blue" onclick="openNote(
+    'ENEM BRACELET',
+    '<img src=\'img/enembracelet.png\' alt=\'ENEM Bracelet\' style=\'max-width:100%; height:auto;\'>'
+    )">
+      <div class="scribbles"></div>
+    </div>
+
+    <div class="paper green" onclick="openNote(
+    'ENEM GRADES',
+    '<img src=\'img/enemgrade.png\' alt=\'ENEM Grades\' style=\'max-width:100%; height:auto;\'>'
+    )">
+      <div class="scribbles"></div>
+    </div>
+
+    <div class="paper yellow" onclick="openNote(
+    'WCWP 10A',
+    '<p style=\'text-align: justify; margin: 0;\'>In WCWP 10A, I stumbled upon creative writing for the first time. Because the focus of the course was on larger social systems, it opened up space for personal anecdotes and lived experiences, something I had never really been encouraged to include in academic writing before. At first, I did not see this as something that carried much value. <br><br>However, through drafting and peer review, I began noticing how other people were using their own experiences to strengthen their arguments, which made me start to rethink what actually counts as evidence in writing.</p>'
+    )">
+      <div class="scribbles"></div>
+    </div>
+
+    <div class="paper purple" onclick="openNote(
+    'WCWP 10B',
+    '<p style=\'text-align: justify; margin: 0;\'>In WCWP 10B, the class had a very specific topic, which meant everything had to be tied together. It was challenging, but in a good way. The experiences I used in my writing had to be much more specific, which pushed me to really dig into them and question them. <br><br>The research also became more focused, requiring a deeper level of engagement with the material.</p>'
+    )">
+      <div class="scribbles"></div>
+    </div>
+
+    <a href="lock.html" class="clue-link">
+      <img src="img/warren_clue.png" alt="Clue" class="clue-image">
+    </a>
+
+  </div>
+
+  <script src="home.js"></script>
+
+</body>
+
+</html>

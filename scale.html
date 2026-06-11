@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    <link rel="icon" type="image/x-icon" href="/img/lock2.png">
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #292929;
+            --card-light: #292929;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, Segoe UI, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top, rgb(56, 57, 58) 0%, #292929 60%);
+            min-height: 100vh;
+            padding: 50px 20px;
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(61, 61, 61, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, .05);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, .4);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .scale-group {
+            margin-bottom: 35px;
+        }
+
+        .scale-label {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+        }
+
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider-container {
+            flex: 1;
+        }
+
+        .slider {
+            width: 100%;
+            appearance: none;
+            height: 18px;
+            border-radius: 999px;
+            outline: none;
+
+            background:
+                linear-gradient(to right,
+                    #ff4d4d 0%,
+                    #ff914d 20%,
+                    #fff34d 40%,
+                    #c0ff41 60%,
+                    #7ee081 80%,
+                    #24b300 100%);
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid white;
+            cursor: pointer;
+            box-shadow:
+                0 0 20px rgba(255, 255, 255, .3),
+                0 4px 15px rgba(0, 0, 0, .4);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        .value-indicator {
+            width: 60px;
+            text-align: center;
+            font-weight: 700;
+            color: white;
+            background: var(--card-light);
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 14px;
+        }
+
+        .text-section {
+            margin-top: 45px;
+        }
+
+        .text-box {
+            width: 100%;
+            min-height: 150px;
+            resize: vertical;
+
+            background: #292929;
+            color: white;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            padding: 18px;
+            margin-bottom: 20px;
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .text-box::placeholder {
+            color: var(--text-muted);
+        }
+
+        .text-box:focus {
+            outline: none;
+            border-color: #969ca4;
+            box-shadow:
+                0 0 0 3px rgba(96, 165, 250, .15);
+        }
+
+        #secretButton {
+            position: fixed;
+            bottom: 8px;
+            right: 12px;
+
+            background: transparent;
+            border: none;
+
+            color: #4b4b4b;
+            font-size: 14px;
+
+            cursor: pointer;
+            opacity: .9;
+            z-index: 9999;
+        }
+
+        #secretButton:hover {
+            color: #8a8a8a;
+            opacity: 1;
+        }
+
+        /* ✅ NEXT BUTTON */
+        #nextButton {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+
+            background: #24b300;
+            color: white;
+
+            border: none;
+            border-radius: 14px;
+
+            padding: 10px 16px;
+
+            font-weight: 600;
+            cursor: pointer;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: 0.2s;
+        }
+
+        #nextButton:hover {
+            transform: translateY(-2px);
+            background: #1f9900;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Section 6</h1>
+
+        <button id="secretButton">nothing to see here</button>
+
+        <div class="scale-group">
+            <div class="scale-label">Completes Assignments</div>
+            <div class="slider-row">
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" step="1" value="0" class="slider">
+                </div>
+                <div class="value-indicator">0</div>
+            </div>
+        </div>
+
+        <div class="scale-group">
+            <div class="scale-label">Writing Process Requirements</div>
+            <div class="slider-row">
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" step="1" value="0" class="slider">
+                </div>
+                <div class="value-indicator">0</div>
+            </div>
+        </div>
+
+        <div class="scale-group">
+            <div class="scale-label">Absences</div>
+            <div class="slider-row">
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" step="1" value="0" class="slider">
+                </div>
+                <div class="value-indicator">0</div>
+            </div>
+        </div>
+
+        <div class="scale-group">
+            <div class="scale-label">Preparation and Engagement</div>
+            <div class="slider-row">
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" step="1" value="0" class="slider">
+                </div>
+                <div class="value-indicator">0</div>
+            </div>
+        </div>
+
+        <div class="scale-group">
+            <div class="scale-label">Reading Annotations</div>
+            <div class="slider-row">
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" step="1" value="0" class="slider">
+                </div>
+                <div class="value-indicator">0</div>
+            </div>
+        </div>
+
+        <div class="scale-group">
+            <div class="scale-label">Group Presentations</div>
+            <div class="slider-row">
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" step="1" value="0" class="slider">
+                </div>
+                <div class="value-indicator">0</div>
+            </div>
+        </div>
+
+        <div class="text-section">
+
+            <textarea class="text-box">
+Late peer review submission for project 1. I spoke with the professor to explain the situation and submitted the missing work immediately after the next class session.
+        </textarea>
+
+            <textarea class="text-box">
+Regarding class participation, I'm very shy, so speaking up in large group settings requires maximum effort on my part. Because of this, I focused my engagement on other core course components: annotations, small group discussions, and Kahoot games.
+        </textarea>
+
+        </div>
+
+    </div>
+
+    <script>
+        const sliders = document.querySelectorAll('.slider');
+
+        sliders.forEach(slider => {
+            const indicator =
+                slider.closest('.slider-row')
+                    .querySelector('.value-indicator');
+
+            slider.addEventListener('input', () => {
+                indicator.textContent = slider.value;
+            });
+        });
+
+        const secretButton = document.getElementById('secretButton');
+
+        secretButton.addEventListener('click', () => {
+            window.open(
+                'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                '_blank'
+            );
+        });
+    </script>
+
+    <button id="nextButton" onclick="window.location.href='trial.html'">
+        Next →
+    </button>
+
+</body>
+
+</html>

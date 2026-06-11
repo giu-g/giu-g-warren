@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+body {
+  background: black;
+  overflow: hidden;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* Hidden title */
+.hidden-title {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 5.4rem;
+  letter-spacing: 8px;
+  color: rgba(255,255,255,0.09);
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Flashlight */
+.flashlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 160px at 50% 50%,
+    rgba(255,255,255,0.12) 0%,
+    rgba(0,0,0,0.2) 35%,
+    rgba(0,0,0,0.98) 100%
+  );
+}
+
+/* Login box */
+.login-container {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(136, 134, 132, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+  color: white;
+  z-index: 10;
+}
+
+.login-container h2 {
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+#message {
+  margin-top: 14px;
+  min-height: 20px;
+  font-size: 0.95rem;
+  color: #ffd6d6;
+}
+
+/* Hidden texts */
+.hidden-name {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+
+  color: rgba(255,255,255,0.1);
+
+  text-transform: uppercase;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.hidden-course {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+
+  color: rgba(255,255,255,0.1);
+
+  text-transform: uppercase;
+
+  user-select: none;
+  pointer-events: none;
+}

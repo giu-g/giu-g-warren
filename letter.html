@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1</title>
+  <link rel="icon" type="image/x-icon" href="/img/lock2.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #111;
+
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding-left: 50px;
+      padding-right: 50px;
+
+      font-family: Georgia, serif;
+    }
+
+    .letter-container {
+
+      width: min(900px, 90vw);
+
+      min-height: 100vh;
+
+      background: #fdfdfb;
+
+      border-left: 40px solid #c89a58;
+      border-right: 40px solid #c89a58;
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45);
+
+      padding: 70px;
+
+      position: relative;
+    }
+
+    .letter-container::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        repeating-linear-gradient(transparent,
+          transparent 24px,
+          rgba(0, 0, 0, 0.015) 25px);
+
+      pointer-events: none;
+    }
+
+    .letter-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-content h1 {
+
+      margin-bottom: 30px;
+
+      font-size: 2.5rem;
+
+      color: #222;
+    }
+
+    .letter-content p {
+
+      line-height: 2;
+
+      color: #444;
+
+      font-size: 1rem;
+    }
+
+    .section-row {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .reverse {
+      flex-direction: row;
+    }
+
+    .text-side {
+      flex: 1;
+    }
+
+    .image-side {
+      flex: 1;
+      text-align: center;
+    }
+
+    .image-side img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+    }
+
+    .full-section {
+      margin-top: 40px;
+    }
+
+    .evidence-container {
+      position: relative;
+    }
+
+    .evidence-btn {
+      position: static;
+      display: inline-block;
+
+      margin-top: 10px;
+
+      background: none;
+      border: none;
+
+      color: black;
+      opacity: .35;
+
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .evidence-btn.second {
+      left: 140px;
+    }
+
+    .evidence-btn:hover {
+      opacity: .35;
+    }
+
+    .next-button-container {
+      margin-top: 60px;
+      text-align: right;
+    }
+
+    .next-button-container img {
+      width: 120px;
+      transition: .2s;
+    }
+
+    .next-button-container img:hover {
+      transform: translateX(6px);
+    }
+
+    .evidence-modal {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0, 0, 0, .85);
+
+      justify-content: center;
+      align-items: center;
+
+      z-index: 9999;
+    }
+
+    .evidence-content {
+      position: relative;
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+
+    .evidence-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 12px;
+    }
+
+    .close-evidence {
+      position: absolute;
+      top: -40px;
+      right: 0;
+
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="letter-container">
+
+    <div class="letter-content">
+
+      <h1>Section 1: Prior Knowledge About the Climate Crisis</h1>
+
+      <div class="section-row">
+
+        <div class="text-side">
+          <p>
+            Before coming to UCSD, my understanding of climate change was mostly limited to what I learned in high
+            school biology classes. When I thought about climate change, I thought about the greenhouse effect, carbon
+            emissions, and rising global temperatures. I could picture the polar bear sitting on melting ice; however,
+            when it came to questions of responsibility and solutions, my understanding was much less developed.
+          </p>
+
+          <br>
+
+          <p>
+            My idea of climate action came from the familiar, standardized classroom speech: "What can you do to save
+            the planet?" The answer was always some variation of the same list: recycle, turn off the lights when you
+            leave a room, avoid plastic straws at all costs, and reduce your carbon footprint.
+          </p>
+        </div>
+
+        <div class="image-side">
+          <img src="img/polarbear.png" alt="Polar Bear">
+        </div>
+
+      </div>
+
+      <div class="section-row reverse">
+
+        <div class="image-side evidence-container">
+
+          <img src="img/classroom.png" alt="Classroom">
+
+          <button class="evidence-btn" onclick="openEvidence('img/evidence1.png')">
+            Evidence 1
+          </button>
+
+          <button class="evidence-btn second" onclick="openEvidence('img/evidence2.HEIC')">
+            Evidence 2
+          </button>
+
+        </div>
+
+        <div class="text-side">
+          <p>
+            Although individuals are somewhat responsible for the climate crisis, there is much more to the story than
+            personal choices. UCSD helped me realize that.
+          </p>
+
+          <br>
+
+          <p>
+            When I enrolled in PSYC 42, I was simply looking for an easy way to fulfill a university requirement, so I
+            did not expect the class to leave much of an impression on me.
+          </p>
+
+          <br>
+
+          <p>
+            Instead, Professor Adam Aron significantly expanded my perspective by connecting the science I was already
+            familiar with to social history, politics, and the psychological barriers that often prevent people from
+            responding to the crisis.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="full-section">
+
+        <p>
+          While PSYC 42 gave me a strong foundation of facts, research, and theories about the climate crisis, WCWP 10B
+          gave me the opportunity to actually do something with that knowledge. I was asked to investigate climate
+          issues, write about them, and connect them to my own experiences.
+        </p>
+
+        <br>
+
+        <p>
+          As I worked through my projects, I found myself drawing connections between course concepts and my childhood
+          in Brazil. In particular, I was able to recognize and explain a gap in climate literacy that I had witnessed
+          growing up but had never previously examined.
+        </p>
+
+      </div>
+
+      <div class="next-button-container">
+        <a href="home.html">
+          <img src="img/NEXT2.png" alt="Next">
+        </a>
+      </div>
+
+      <div id="evidenceModal" class="evidence-modal">
+        <div class="evidence-content">
+          <span class="close-evidence" onclick="closeEvidence()">&times;</span>
+
+          <img id="evidenceImage" src="" alt="Evidence">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function openEvidence(src) {
+      document.getElementById("evidenceImage").src = src;
+      document.getElementById("evidenceModal").style.display = "flex";
+    }
+
+    function closeEvidence() {
+      document.getElementById("evidenceModal").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <link rel="icon" type="image/x-icon" href="/img/lock2.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top, #1c1c1c 0%, #0b0b0b 70%);
+
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .scene {
+            perspective: 1800px;
+        }
+
+        /* Envelope */
+
+        .envelope {
+            position: relative;
+
+            width: 720px;
+            height: 460px;
+
+            filter:
+                drop-shadow(0 35px 60px rgba(0, 0, 0, 0.6));
+        }
+
+        .envelope-body {
+            position: absolute;
+            inset: 0;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(145deg,
+                    #d9b074 0%,
+                    #be8b4c 40%,
+                    #9f6c33 100%);
+
+            overflow: hidden;
+        }
+
+        .envelope-body::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            opacity: 0.08;
+
+            background:
+                repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.5) 0px,
+                    rgba(255, 255, 255, 0.5) 2px,
+                    transparent 2px,
+                    transparent 6px);
+        }
+
+        .envelope-body::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 0;
+
+            width: 2px;
+            height: 100%;
+
+            background:
+                rgba(0, 0, 0, 0.12);
+
+            transform: translateX(-50%);
+        }
+
+        /* Top flap */
+
+        .flap {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 240px;
+
+            background:
+                linear-gradient(160deg,
+                    #e0ba82 0%,
+                    #bf8845 100%);
+
+            clip-path: polygon(0 0,
+                    100% 0,
+                    50% 100%);
+
+            transform-origin: top;
+
+            z-index: 5;
+
+            border-radius: 12px 12px 0 0;
+
+            animation:
+                openEnvelope 2.4s cubic-bezier(.77, 0, .18, 1) forwards;
+
+            animation-delay: 1.3s;
+        }
+
+        .flap::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.18),
+                    transparent);
+
+            clip-path: inherit;
+        }
+
+        /* Stamp */
+
+        .stamp {
+            position: absolute;
+
+            top: 250px;
+            right: 95px;
+
+            padding: 14px 22px;
+
+            border: 3px solid #ff3d57;
+
+            color: #ff3d57;
+
+            font-size: 0.9rem;
+            font-weight: 700;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            transform: rotate(10deg);
+
+            z-index: 10;
+
+            border-radius: 6px;
+
+            backdrop-filter: blur(3px);
+
+            background:
+                rgba(255, 255, 255, 0.06);
+
+            box-shadow:
+                0 0 20px rgba(255, 61, 87, 0.15);
+        }
+
+        .envelope-glow {
+            position: absolute;
+
+            width: 900px;
+            height: 900px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(255, 190, 120, 0.08),
+                    transparent 70%);
+
+            z-index: -1;
+        }
+
+        @keyframes openEnvelope {
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            100% {
+                transform: rotateX(180deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scene">
+        <div class="envelope">
+
+            <div class="flap"></div>
+
+            <div class="envelope-body"></div>
+
+            <div class="stamp">
+                Top Secret
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = "letter.html";
+        }, 3800);
+    </script>
+
+</body>
+
+</html>

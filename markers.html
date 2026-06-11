@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5</title>
+<link rel="icon" type="image/x-icon" href="/img/lock2.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        radial-gradient(circle at top, #141414 0%, #050505 70%);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    color: white;
+    position: relative;
+}
+
+.main-title,
+.main-subtitle {
+    text-align: center;
+    color: #fef3c7;
+    font-family: Inter, "Segoe UI", sans-serif;
+    font-weight: 600;
+    letter-spacing: .1em;
+    position: relative;
+    z-index: 5;
+}
+
+.main-title {
+    font-size: 3rem;
+    margin-top: 60px;
+}
+
+.main-subtitle {
+    font-size: 2.5rem;
+    margin-top: 8px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 220px;
+    width: 4px;
+    height: 1600px;
+    background:
+        linear-gradient(to bottom,
+            crimson,
+            rgba(255, 0, 60, 0.2));
+    transform: translateX(-50%);
+    box-shadow:
+        0 0 20px rgba(255, 0, 60, 0.35);
+}
+
+.timeline {
+    width: 100%;
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.evidence {
+    position: relative;
+    width: 100%;
+    min-height: 240px;
+    margin-bottom: 120px;
+}
+
+.marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: #ffd54f;
+    clip-path: polygon(50% 0%,
+            100% 25%,
+            100% 100%,
+            0% 100%,
+            0% 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.45);
+    z-index: 5;
+}
+
+.card {
+    width: 420px;
+    background:
+        rgba(255, 255, 255, 0.04);
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 28px;
+    position: relative;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card h2 {
+    margin-bottom: 16px;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+}
+
+.card p {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.left .card {
+    margin-left: 8%;
+}
+
+.right .card {
+    margin-left: auto;
+    margin-right: 8%;
+}
+
+.left .string {
+    position: absolute;
+    top: 38px;
+    left: calc(50% - 220px);
+    width: 220px;
+    height: 3px;
+    background: crimson;
+    transform: rotate(-8deg);
+    box-shadow:
+        0 0 12px rgba(255, 0, 60, 0.45);
+}
+
+.right .string {
+    position: absolute;
+    top: 38px;
+    right: calc(50% - 220px);
+    width: 220px;
+    height: 3px;
+    background: crimson;
+    transform: rotate(8deg);
+    box-shadow:
+        0 0 12px rgba(255, 0, 60, 0.45);
+}
+
+/* FOOTPRINT BUTTON */
+.footprints {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    width: 220px;
+    height: 220px;
+    text-decoration: none;
+    z-index: 50;
+}
+
+.footprint {
+    position: absolute;
+    font-size: 3.2rem;
+    opacity: 0.12;
+    color: white;
+    transition: 0.25s ease;
+    filter: blur(1px);
+}
+
+.fp1 { bottom: 0; right: 0; transform: rotate(-20deg); }
+.fp2 { bottom: 50px; right: 55px; transform: rotate(15deg); }
+.fp3 { bottom: 105px; right: 100px; transform: rotate(-18deg); }
+.fp4 { bottom: 155px; right: 155px; transform: rotate(12deg); }
+
+.footprints:hover .footprint {
+    opacity: 1;
+    color: #ff4d6d;
+    filter: drop-shadow(0 0 12px rgba(255,0,80,0.8));
+}
+
+/* NEW NAV BUTTON */
+.next-card-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: #ffd54f;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="main-title">Section 5:</h1>
+<h1 class="main-subtitle">Breakthroughs & "Aha!" Moments</h1>
+
+<div class="timeline-line"></div>
+
+<div class="timeline">
+
+    <div class="evidence left">
+        <div class="marker">1</div>
+        <div class="string"></div>
+
+        <div class="card">
+            <img src="img/ayana.avif" style="width:100%; border-radius:12px;">
+        </div>
+    </div>
+
+    <div class="evidence right">
+        <div class="marker">2</div>
+        <div class="string"></div>
+
+        <div class="card">
+            <h2>Are we really doomed?</h2>
+            <p>
+                One of the biggest shifts in my understanding of the climate crisis came from Ayana Elizabeth Johnson’s TED Talk.
+                Before watching it, my perspective on climate change was shaped mostly by a sense of inevitability and overwhelm,
+                where it often felt like the situation was already too far gone and that individual action wouldn’t really make a difference in the long run.
+            </p>
+        </div>
+    </div>
+
+    <div class="evidence left">
+        <div class="marker">3</div>
+        <div class="string"></div>
+
+        <div class="card">
+            <p>
+                I liked the way she framed climate work as something ongoing and collective, where there’s no single solution.
+                It also shifted the way I think about my own participation (Venn Diagram), since it suggests that involvement
+                can look different depending on context and abilities.
+            </p>
+        </div>
+    </div>
+
+    <div class="evidence right">
+        <div class="marker">4</div>
+        <div class="string"></div>
+
+        <div class="card">
+            <img src="img/skywoman.jpg" style="width:100%; border-radius:12px;">
+        </div>
+    </div>
+
+    <div class="evidence left">
+        <div class="marker">5</div>
+        <div class="string"></div>
+
+        <div class="card">
+            <h2>Skywoman</h2>
+            <p>
+                Our class discussion about Robin Wall Kimmerer's essay "Skywoman Falling" completely changed how I view
+                the relationship between humans, animals, and nature. It also forced me to contrast this perspective with
+                the story of Eve that I grew up hearing.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<a href="scale.html" class="next-card-button">N</a>
+
+<a href="scale.html" class="footprints">
+    <div class="footprint fp1">👣</div>
+    <div class="footprint fp2">👣</div>
+    <div class="footprint fp3">👣</div>
+    <div class="footprint fp4">👣</div>
+</a>
+
+</body>
+</html>

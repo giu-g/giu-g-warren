@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <link rel="icon" type="image/x-icon" href="/img/lock2.png">
+    <style>
+        :root {
+            --bg-color: #292929;
+            --panel-bg: #404245;
+            --accent-color: #f83838;
+            --text-color: #f8fafc;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .lock-container {
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lock-title {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .lock-wrapper {
+            position: relative;
+            width: 280px;
+            height: 220px;
+            margin: 0 auto 2rem;
+        }
+
+        .shackle {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 120px;
+            border: 16px solid #64748b;
+            border-bottom: none;
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .lock-body {
+            position: absolute;
+            top: 50px;
+            width: 280px;
+            height: 170px;
+            background: linear-gradient(135deg, #8895a7, #1e293b);
+            border: 4px;
+            border-radius: 24px;
+            z-index: 2;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            padding: 0 20px;
+        }
+
+        .tumbler-wheel {
+            width: 45px;
+            height: 90px;
+            background-color: #0f172a;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8);
+        }
+
+        .wheel-strip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wheel-digit {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+
+        .lock-body::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            top: 50%;
+            height: 34px;
+            transform: translateY(-50%);
+            border-top: 2px solid rgba(239, 68, 68, 0.4);
+            border-bottom: 2px solid rgba(239, 68, 68, 0.4);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .unlocked .shackle {
+            transform: translate(-50%, -35px) rotate(-15deg);
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-12px);
+            }
+
+            75% {
+                transform: translateX(12px);
+            }
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 2rem;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dash-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: #656668;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .card p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="lockScreen" class="lock-container">
+        <div class="lock-wrapper" id="lockAsset">
+            <div class="shackle"></div>
+            <div class="lock-body">
+
+                <div class="tumbler-wheel" onclick="spinWheel(0)">
+                    <div class="wheel-strip" id="strip0"></div>
+                </div>
+
+                <div class="tumbler-wheel" onclick="spinWheel(1)">
+                    <div class="wheel-strip" id="strip1"></div>
+                </div>
+
+                <div class="tumbler-wheel" onclick="spinWheel(2)">
+                    <div class="wheel-strip" id="strip2"></div>
+                </div>
+
+                <div class="tumbler-wheel" onclick="spinWheel(3)">
+                    <div class="wheel-strip" id="strip3"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboardScreen" class="dashboard-container hidden">
+        <h1 class="dash-title">Section 3</h1>
+
+        <div class="cards-grid">
+            <div class="card">
+                <p>Master advanced full-stack development patterns, build 5 production-ready open-source projects, and
+                    deep dive into systems architecture design templates.</p>
+            </div>
+
+            <div class="card">
+                <p>Maintain a 100-day committing streak, optimize physical health metrics, and read 12 engineering
+                    architecture case studies before Q4 ends.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const wheelValues = [0, 0, 0, 0];
+        const strips = [
+            document.getElementById('strip0'),
+            document.getElementById('strip1'),
+            document.getElementById('strip2'),
+            document.getElementById('strip3')
+        ];
+
+        const lockAsset = document.getElementById('lockAsset');
+        const lockScreen = document.getElementById('lockScreen');
+        const dashboardScreen = document.getElementById('dashboardScreen');
+
+        function initWheels() {
+            strips.forEach(strip => {
+                let htmlContent = '<div class="wheel-digit">&nbsp;</div>';
+                for (let i = 0; i <= 9; i++) {
+                    htmlContent += `<div class="wheel-digit">${i}</div>`;
+                }
+                htmlContent += '<div class="wheel-digit">&nbsp;</div>';
+                strip.innerHTML = htmlContent;
+                updateWheelUI(strip, 0);
+            });
+        }
+
+        function updateWheelUI(strip, val) {
+            const yOffset = -(val * 30);
+            strip.style.transform = `translateY(${yOffset}px)`;
+        }
+
+        function spinWheel(wheelIndex) {
+            wheelValues[wheelIndex] = (wheelValues[wheelIndex] + 1) % 10;
+            updateWheelUI(strips[wheelIndex], wheelValues[wheelIndex]);
+
+            checkCombination();
+        }
+
+        function checkCombination() {
+            const currentCode = wheelValues.join('');
+
+            if (currentCode === '2026') {
+                lockAsset.classList.add('unlocked');
+
+                setTimeout(() => {
+                    window.location.href = "challenges.html";
+                }, 900);
+            } else {
+                lockAsset.classList.remove('shake');
+                void lockAsset.offsetWidth; // restart animation
+                lockAsset.classList.add('shake');
+            }
+        }
+
+        initWheels();
+    </script>
+</body>
+
+</html>
